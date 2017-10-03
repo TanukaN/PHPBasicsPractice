@@ -13,9 +13,9 @@
 			echo "The value of \$year: ";
 			print_r($year);
 	
+			$new_date = date('Y/m/d', time());
 			dateClass :: replaceString($date);
 			dateClass :: dateCompare($date);
-			$new_date = date('Y/m/d', time());
 			dateClass :: stringPositions($new_date,$find);
 			dateClass :: wordCount($date);
 			dateClass :: stringLength($date);
@@ -28,7 +28,7 @@
 	}
 	class dateClass {
 		static public function replaceString($date) {
-		echo "<br><br>Replacing '-' with '/' in \$date: ".str_replace('-','/',$date)."<br><hr>";
+			echo "<br><br>Replacing '-' with '/' in \$date: ".str_replace('-','/',$date)."<br><hr>";
 		}
 		static public function dateCompare($date) {
 			if((strtotime($date))-(strtotime($tar))>0) {
@@ -85,7 +85,8 @@
 		}
 		static public function leapYear2($year) {
 			for($i=0;$i<sizeof($year);$i++) {
-                                switch((($year[$i]%400)==0) || ((($year[$i]%100)!=0) && (($year[$i]%4)==0))) {
+				$leapyear = ((($year[$i]%400)==0) || ((($year[$i]%100)!=0) && (($year[$i]%4)==0)));
+                                switch($leapyear) {
                                         case (true) : echo 'True&nbsp;';
                                         break;
                                         default: echo 'False&nbsp;';
